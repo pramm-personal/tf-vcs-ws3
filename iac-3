@@ -1,0 +1,21 @@
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1" # You can change this to your desired AWS region
+}
+
+# Declare the S3 Bucket resource
+resource "aws_s3_bucket" "example_bucket" {
+  # The bucket name must be globally unique
+  bucket = "my-unique-terraform-bucket-name" 
+  
+  # Enable versioning for data protection
+  versioning {
+    enabled = true
+  }
+
+  # Add tags for organization and management
+  tags = {
+    Project     = "ExampleIaC"
+    Environment = "Development"
+  }
+}
